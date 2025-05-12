@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import crypto from 'crypto';
-import { generateToken } from '../utilities/paseto.utils';
+import { generateToken } from '../utilities/paseto.utils.js';
 
 const admin = {
   name: 'SuperAdmin',
