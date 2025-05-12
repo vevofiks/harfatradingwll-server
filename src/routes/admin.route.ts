@@ -1,4 +1,4 @@
-import * as adminController from '../controllers/admin.controller.ts';
+import * as adminController from '../controllers/admin.controller';
 
 
 import { Router } from 'express';

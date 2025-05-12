@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import adminRoutes from './routes/admin.route.ts';
-import categoryRoutes from './routes/category.route.ts';
-import productRoutes from './routes/product.route.ts'
+import adminRoutes from './routes/admin.route';
+import categoryRoutes from './routes/category.route';
+import productRoutes from './routes/product.route'
 
 
 
