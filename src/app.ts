@@ -10,6 +10,8 @@ import productRoutes from './routes/product.route'
 
 dotenv.config();
 
+console.log('Connecting to MongoDB...',process.env.MONGODB_URI);
+
 const app = express();
 
 app.use(express.json());

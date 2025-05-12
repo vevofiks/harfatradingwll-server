@@ -1,27 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteCategory = exports.updateCategory = exports.addCategory = exports.getAllCategories = void 0;
-const category_model_1 = require("../models/category.model");
-const getAllCategories = async (_req, res) => {
-    const categories = await category_model_1.Category.find();
+import { Category } from '../models/category.model';
+export const getAllCategories = async (_req, res) => {
+    const categories = await Category.find();
     res.json(categories);
 };
-exports.getAllCategories = getAllCategories;
-const addCategory = async (req, res) => {
+export const addCategory = async (req, res) => {
     const { name } = req.body;
-    const category = await category_model_1.Category.create({ name });
+    const category = await Category.create({ name });
     res.status(201).json(category);
 };
-exports.addCategory = addCategory;
-const updateCategory = async (req, res) => {
+export const updateCategory = async (req, res) => {
     const { id } = req.params;
-    const updated = await category_model_1.Category.findByIdAndUpdate(id, req.body, { new: true });
+    const updated = await Category.findByIdAndUpdate(id, req.body, { new: true });
     res.json(updated);
 };
-exports.updateCategory = updateCategory;
-const deleteCategory = async (req, res) => {
+export const deleteCategory = async (req, res) => {
     const { id } = req.params;
-    await category_model_1.Category.findByIdAndDelete(id);
+    await Category.findByIdAndDelete(id);
     res.status(204).send();
 };
-exports.deleteCategory = deleteCategory;

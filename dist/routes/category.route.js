@@ -1,10 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const category_controller_1 = require("../controllers/category.controller");
-const router = (0, express_1.Router)();
-router.get('/', category_controller_1.getAllCategories);
-router.post('/add', category_controller_1.addCategory);
-router.put('/:id', category_controller_1.updateCategory);
-router.delete('/:id', category_controller_1.deleteCategory);
-exports.default = router;
+import { Router } from 'express';
+import { getAllCategories, addCategory, updateCategory, deleteCategory, } from '../controllers/category.controller';
+const router = Router();
+router.get('/', getAllCategories);
+router.post('/add', addCategory);
+router.put('/:id', updateCategory);
+router.delete('/:id', deleteCategory);
+export default router;

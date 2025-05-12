@@ -1,12 +1,8 @@
 import { V4 } from 'paseto';
 import { Buffer } from 'buffer';
-import path from 'path';
 import dotenv from 'dotenv';
 
-const envPath = path.resolve(__dirname, '../.env');
-
-dotenv.config({ path: envPath });
-
+dotenv.config(); 
 
 const privateKey = (() => {
   const key = process.env.PASETO_PRIVATE_KEY;
