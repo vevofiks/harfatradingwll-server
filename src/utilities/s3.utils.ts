@@ -1,5 +1,5 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { s3 } from "../config/s3.config";
+import { s3 } from "../config/s3.config.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const uploadToS3 = async (
