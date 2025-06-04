@@ -29,7 +29,7 @@ export async function generateToken(payload) {
             expiresIn: '1h',
             audience: 'http://localhost:5000',
             issuer: 'http://localhost:5000/backend',
-            subject: payload.username,
+            subject: payload.email,
         });
     }
     catch (error) {
