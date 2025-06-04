@@ -1,10 +1,38 @@
 import * as adminController from '../controllers/admin.controller.js';
+import multer from 'multer';
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 
 import { Router } from 'express';
+import * as productController from '../controllers/product.controller.js';
+import * as categoryController from '../controllers/category.controller.js';
+
 
 const router = Router();
 
 router.post('/login', adminController.adminLogin);
+
+
+router.get('/products', productController.getAllProducts);
+router.post('/product/add', upload.single('image'), productController.createProduct);
+router.put('/product/:id', upload.single('image'), productController.updateProduct);
+router.delete('/product/:id', productController.deleteProduct);
+router.patch('/product/:id/block', productController.toggleProductBlock);
+router.get('/product/blocked', productController.getBlockedProducts);
+router.get('/product/unblocked', productController.getUnblockedProducts);
+router.get('/product/new-arrivals', productController.getNewArrivals);
+router.get('/product/:id', productController.getProductById);
+router.get('/product/category/:categoryId', productController.getProductsByCategory);
+
+
+router.get('/categories', categoryController.getAllCategories);
+router.post('/category/add', categoryController.addCategory);
+router.put('/category/:id', categoryController.updateCategory);
+router.delete('/category/:id', categoryController.deleteCategory);
+router.patch('/category/block/:id', categoryController.toggleCategoryBlock);
+
+
+
 
 export default router;

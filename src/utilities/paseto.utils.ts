@@ -1,6 +1,7 @@
 import { V4 } from 'paseto';
 import { Buffer } from 'buffer';
 import dotenv from 'dotenv';
+import TokenPayload from '../payload/token';
 
 dotenv.config(); 
 
@@ -24,14 +25,7 @@ const publicKey = (() => {
   return buffer;
 })();
 
-interface TokenPayload {
-  role: string;
-  username: string;
-  iat?: Date;
-  exp?: Date;
-  iss?: string;
-  sub?: string;
-}
+
 
 export async function generateToken(payload: TokenPayload): Promise<string> {
     try {
@@ -40,7 +34,7 @@ export async function generateToken(payload: TokenPayload): Promise<string> {
         expiresIn: '1h',
         audience: 'http://localhost:5000',
         issuer: 'http://localhost:5000/backend',
-        subject: payload.username,
+        subject: payload.email,
       });
     } catch (error) {
       console.error('Failed to generate PASETO token:', error);

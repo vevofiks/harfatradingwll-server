@@ -1,23 +1,22 @@
 import express from 'express';
 import dotenv from 'dotenv';
+dotenv.config();
 import adminRoutes from './routes/admin.route.js';
-import categoryRoutes from './routes/category.route.js';
-import productRoutes from './routes/product.route.js'
+import cors from 'cors';
+
+
+const app = express();
 
 
 
-
-
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 dotenv.config();
 
 console.log('Connecting to MongoDB...',process.env.MONGODB_URI);
 
-const app = express();
 
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
-app.use('/products', productRoutes);
-app.use('/categories', categoryRoutes);
 app.use('/admin', adminRoutes);
 
 export default app;
