@@ -7,9 +7,14 @@ import cors from 'cors';
 
 const app = express();
 
+app.use(
+    cors({
+      origin: ['https://www.harfatrading.com','http://localhost:3000'], 
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      credentials: true,
+    })
+  );
 
-
-app.use(cors({ origin:['https://www.harfatrading.com','http://localhost:3000'], credentials: true }));
 dotenv.config();
 
 console.log('Connecting to MongoDB...',process.env.MONGODB_URI);
